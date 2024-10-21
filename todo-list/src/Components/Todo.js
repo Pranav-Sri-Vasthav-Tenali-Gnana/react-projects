@@ -5,7 +5,7 @@ export const Todo = ({todo, onDelete}) => {
     <div>
       <h4>{todo.title}</h4>
       <p>{todo.desc}</p>
-      <button class="btn btn-sm btn-danger" onClick={()=>{onDelete(todo)}}>
+      <button className="btn btn-sm btn-danger" onClick={()=>{onDelete(todo)}}>
       Delete</button>
     </div>
   )
