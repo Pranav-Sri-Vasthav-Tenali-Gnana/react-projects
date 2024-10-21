@@ -4,6 +4,7 @@ import Header from './Components/Header'
 import {Footer} from "./Components/Footer";
 import {Todos} from "./Components/Todos";
 import React,{ useState } from 'react';
+import { AddTodo } from './Components/AddTodo';
 
 function App() {
   const onDelete = (todo) => {
@@ -13,6 +14,23 @@ function App() {
       return e!==todo;
     }))
   }; 
+
+  const addTodo = (title, desc) => {
+    console.log(title, desc);
+    let sno;
+    if(todos.length==0){
+      sno = 1;
+    } else {
+      sno = todos[todos.length-1].sno+1;
+    }
+    const myTodo = {
+      sno: sno,
+      title: title,
+      desc: desc
+    }
+    setTodos([...todos, myTodo]);
+    console.log(myTodo);
+  }
   const [todos, setTodos] = useState([
     {
       sno:1,
@@ -34,6 +52,7 @@ function App() {
   return (
     <>
       <Header title="pranavs todos" isSearch={true}/>
+      <AddTodo addTodo={addTodo}/>
       <Todos todos={todos} onDelete = {onDelete} />
       <Footer/>
     </>
